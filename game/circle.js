@@ -16,8 +16,12 @@ Circle.prototype.move = function(mouseX, mouseY){
 	var d = getDistances(mouseX, mouseY, this.x, this.y);
 	if (d.distance > 1){
 		var angle = getAngle(d.distance, d.yDistance);
+		var percent = 1;
 
-		percent = d.distance/300;
+		if (d.distance <= 400){
+			percent = d.distance/400
+		}
+
 		this.speed = this.maxSpeed * percent;
 
 		var xVelocity = this.speed * Math.cos(angle);
